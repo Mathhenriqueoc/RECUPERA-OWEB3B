@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperação3B</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+        
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button2 {
+            background-color: #ee0c17;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        
+        
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px;
+            padding: 5px;
+            background-color: #f3f3f3;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Nº:</h1>
+        <input type="number" id="numero" placeholder="Digite um número de 1 á 100">
+        <button onclick="adicionarNumero()">Adicionar</button>
+        <h2>Números em Ordem:</h2>
+        <ul id="listaNumeros"></ul>
+
+        <div id="botao2">
+            <h4>__________________________</h4>
+        <button2 onclick="RemoverNumero()">Remover</button2>
+        </div>
+        
+    </div>
+
+        
+
+    <script>
+        const numeros = [];
+
+        function adicionarNumero() {
+            const inputNumero = document.getElementById('numero');
+            const numero = parseInt(inputNumero.value);
+
+            if (!isNaN(numero)) {
+                numeros.push(numero);
+                inputNumero.value = '';
+                atualizarLista();
+            }
+        }
+
+        //era pra remover os números ;-;
+    //    // function RemoverNumero() {
+    //         
+
+    //         if (!isNaN(numero)) {
+    //      
+    //             atualizarLista();
+    //         }
+    //     }
+
+        //atualiza a lista da ordem numérica 
+        function atualizarLista() {
+            const listaNumeros = document.getElementById('listaNumeros');
+            listaNumeros.innerHTML = '';
+
+            const numerosOrdenados = [...numeros].sort((a, b) => a - b);
+
+            for (const numero of numerosOrdenados) {
+                const li = document.createElement('li');
+                li.textContent = numero;
+                listaNumeros.appendChild(li);
+            }
+        }
+    </script>
+</body>
+</html>
